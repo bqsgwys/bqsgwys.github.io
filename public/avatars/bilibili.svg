@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" role="img" aria-labelledby="title">
+  <title>Bilibili Icon</title>
+  <rect width="120" height="120" rx="24" fill="#FF5F99" />
+  <path d="M39 32l7 9M81 32l-7 9" fill="none" stroke="#FFFFFF" stroke-linecap="round" stroke-width="6" />
+  <rect x="28" y="39" width="64" height="50" rx="11" fill="none" stroke="#FFFFFF" stroke-width="7" />
+  <rect x="44" y="56" width="8" height="12" rx="4" fill="#FFFFFF" />
+  <rect x="68" y="56" width="8" height="12" rx="4" fill="#FFFFFF" />
+</svg>

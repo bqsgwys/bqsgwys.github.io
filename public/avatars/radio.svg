@@ -1,0 +1,10 @@
+﻿<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" role="img" aria-labelledby="title">
+  <title>Radio Icon</title>
+  <rect width="120" height="120" rx="24" fill="#00BDA9" />
+  <circle cx="60" cy="60" r="15" fill="#FFFFFF" />
+  <circle cx="60" cy="60" r="7" fill="#00BDA9" />
+  <path d="M60 32c-8 0-15 3-21 9" fill="none" stroke="#FFFFFF" stroke-linecap="round" stroke-width="6" />
+  <path d="M60 88c-8 0-15-3-21-9" fill="none" stroke="#FFFFFF" stroke-linecap="round" stroke-width="6" />
+  <path d="M60 32c8 0 15 3 21 9" fill="none" stroke="#FFFFFF" stroke-linecap="round" stroke-width="6" />
+  <path d="M60 88c8 0 15-3 21-9" fill="none" stroke="#FFFFFF" stroke-linecap="round" stroke-width="6" />
+</svg>

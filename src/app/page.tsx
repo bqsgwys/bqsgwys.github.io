@@ -1,134 +1,115 @@
+import Image from "next/image";
+
+const aliasTraditional = "\u8056\u5149";
+const aliasSimplified = "\u5723\u5149";
+const aliasKatakana = "\u30AD\u30E8\u30C6\u30EB";
+const aliasHiragana = "\u304D\u3088\u3066\u308B";
+
+const entry = {
+  term: "Kiyoteru",
+  pronunciation: "/ki-yo-te-ru/",
+  partOfSpeech: "H. Sapiens",
+  definitionItems: [
+    "PhD student focused on BCI and circuits.",
+    "Band member and DJ.",
+    "CR/JR railway fan.",
+    "Seiyuu devotee.",
+    "Dota player.",
+  ],
+};
+
+const links = [
+  { title: "Blog", subtitle: "TBD", href: "/", avatar: "/avatars/blog.svg", theme: "blog" },
+  {
+    title: "Radio",
+    subtitle: "@DJ_Kiyoteru",
+    href: "/",
+    avatar: "/avatars/radio.svg",
+    theme: "radio",
+  },
+  {
+    title: "Bilibili",
+    subtitle: `@${aliasTraditional}Kiyoteru`,
+    href: "https://space.bilibili.com/13131167",
+    avatar: "/avatars/bilibili.svg",
+    theme: "bilibili",
+  },
+  {
+    title: "Github",
+    subtitle: "@bqsgwys",
+    href: "https://github.com/bqsgwys",
+    avatar: "/avatars/github.svg",
+    theme: "github",
+  },
+  {
+    title: "Jisedai Club",
+    subtitle: "Registry",
+    href: "https://reg.thujsd.club/",
+    avatar: "/avatars/club.svg",
+    theme: "thujsd",
+  },
+];
+
 export default function Home() {
-  const year = new Date().getFullYear();
-
   return (
-    <>
-      <header className="site-header">
-        <div className="container header-inner">
-          <a className="brand" href="#home">
-            bqsgwys
-          </a>
-          <nav aria-label="Primary" className="nav">
-            <a href="#home">Home</a>
-            <a href="#projects">Projects</a>
-            <a href="#about">About</a>
-            <a href="#contact">Contact</a>
-          </nav>
+    <main className="home">
+      <section className="entry" aria-label="Profile entry">
+        <header className="entry-header">
+          <h1 className="word">
+            {entry.term}
+            <span className="pronunciation">{entry.pronunciation}</span>
+          </h1>
+          <p className="aliases">
+            {aliasTraditional} / {aliasSimplified} / {aliasHiragana} /{" "}
+            {aliasKatakana}
+          </p>
+        </header>
+
+        <div className="sense-line">
+          <em className="part">{entry.partOfSpeech}</em>
+          <ul className="definition-list">
+            {entry.definitionItems.map((item) => (
+              <li className="definition-item" key={item}>
+                {item}
+              </li>
+            ))}
+          </ul>
         </div>
-      </header>
 
-      <main>
-        <section className="hero" id="home">
-          <div className="container hero-grid">
-            <div>
-              <span className="eyebrow">Next.js + GitHub Pages</span>
-              <h1>Frontend homepage with automatic CI/CD deployment.</h1>
-              <p>
-                This project is configured for static export so every push to
-                <code> main </code>
-                can build and publish to GitHub Pages automatically.
-              </p>
-              <div className="actions">
-                <a className="btn primary" href="#projects">
-                  View Projects
-                </a>
-                <a
-                  className="btn ghost"
-                  href="https://github.com/"
-                  rel="noreferrer"
-                  target="_blank"
-                >
-                  GitHub Profile
-                </a>
-              </div>
-            </div>
-            <div aria-hidden="true" className="orbit">
-              <div className="orb one">Code</div>
-              <div className="orb two">Ship</div>
-              <div className="orb three">Scale</div>
-              <div className="orb center">bqsgwys</div>
-            </div>
-          </div>
-        </section>
-
-        <section id="projects">
-          <div className="container">
-            <div className="section-title">
-              <h2>Featured Projects</h2>
-              <p>Replace these cards with your own repositories and demos.</p>
-            </div>
-            <div className="cards">
-              <article className="card">
-                <h3>Project One</h3>
-                <p>
-                  A polished marketing frontend with animations and responsive
-                  layout.
-                </p>
-                <div className="meta">Next.js</div>
-              </article>
-              <article className="card">
-                <h3>Project Two</h3>
-                <p>
-                  Dashboard UI powered by API data and reusable design tokens.
-                </p>
-                <div className="meta">React + TypeScript</div>
-              </article>
-              <article className="card">
-                <h3>Project Three</h3>
-                <p>
-                  Component system optimized for accessibility and mobile
-                  performance.
-                </p>
-                <div className="meta">Design System</div>
-              </article>
-            </div>
-          </div>
-        </section>
-
-        <section id="about">
-          <div className="container">
-            <div className="section-title">
-              <h2>About This Setup</h2>
-              <p>
-                Static output mode keeps deployment simple while preserving the
-                Next.js development workflow.
-              </p>
-            </div>
-            <div className="about-grid">
-              <article className="panel">
-                <h3>Build Target</h3>
-                <p>
-                  <code>next build</code> generates a static <code>out/</code>{" "}
-                  folder for GitHub Pages.
-                </p>
-              </article>
-              <article className="panel">
-                <h3>Auto Deployment</h3>
-                <p>
-                  GitHub Actions uploads <code>out/</code> and deploys it on
-                  every push to <code>main</code>.
-                </p>
-              </article>
-            </div>
-          </div>
-        </section>
-
-        <section id="contact">
-          <div className="container">
-            <article className="contact">
-              <h2>Contact</h2>
-              <p>
-                Add your real links here. Example:{" "}
-                <a href="mailto:hello@example.com">hello@example.com</a>
-              </p>
-            </article>
-          </div>
-        </section>
-      </main>
-
-      <footer className="site-footer">
-        <div className="container">&copy; {year} bqsgwys</div>
-      </footer>
-    </>
+        <nav className="link-stack" aria-label="External links">
+          {links.map((link) => {
+            const isExternal = link.href.startsWith("http");
+            return (
+              <a
+                className={`link-btn link-btn--${link.theme}`}
+                href={link.href}
+                key={link.title}
+                rel={isExternal ? "noreferrer" : undefined}
+                target={isExternal ? "_blank" : undefined}
+              >
+                <span className="link-left">
+                  <span aria-hidden="true" className="link-avatar">
+                    <Image
+                      alt=""
+                      className="link-avatar-img"
+                      height={40}
+                      src={link.avatar}
+                      width={40}
+                    />
+                  </span>
+                  <span className="link-main">
+                    <span className="link-title">{link.title}</span>
+                    <span className="link-subtitle">{link.subtitle}</span>
+                  </span>
+                </span>
+                <span aria-hidden="true" className="link-arrow">
+                  -&gt;
+                </span>
+              </a>
+            );
+          })}
+        </nav>
+      </section>
+    </main>
   );
 }
