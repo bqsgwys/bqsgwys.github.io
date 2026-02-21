@@ -1,4 +1,5 @@
 import Image from "next/image";
+import styles from "./page.module.css";
 
 const aliasTraditional = "\u8056\u5149";
 const aliasSimplified = "\u5723\u5149";
@@ -18,7 +19,23 @@ const entry = {
   ],
 };
 
-const links = [
+type LinkTheme =
+  | "blog"
+  | "radio"
+  | "rhythm"
+  | "bilibili"
+  | "github"
+  | "thujsd";
+
+type LinkItem = {
+  title: string;
+  subtitle: string;
+  href: string;
+  avatar: string;
+  theme: LinkTheme;
+};
+
+const links: LinkItem[] = [
   { title: "Blog", subtitle: "TBD", href: "/", avatar: "/avatars/blog.svg", theme: "blog" },
   {
     title: "Radio",
@@ -26,6 +43,13 @@ const links = [
     href: "/",
     avatar: "/avatars/radio.svg",
     theme: "radio",
+  },
+  {
+    title: "Rhythm",
+    subtitle: "Annotating Pingshui Rhyme",
+    href: "/rhythm",
+    avatar: "/avatars/rhythm.svg",
+    theme: "rhythm",
   },
   {
     title: "Bilibili",
@@ -50,59 +74,68 @@ const links = [
   },
 ];
 
+const linkThemeClassMap: Record<LinkTheme, string> = {
+  blog: styles.linkBtnBlog,
+  radio: styles.linkBtnRadio,
+  rhythm: styles.linkBtnRhythm,
+  bilibili: styles.linkBtnBilibili,
+  github: styles.linkBtnGithub,
+  thujsd: styles.linkBtnThujsd,
+};
+
 export default function Home() {
   return (
-    <main className="home">
-      <section className="entry" aria-label="Profile entry">
-        <header className="entry-header">
-          <h1 className="word">
+    <main className={styles.home}>
+      <section className={styles.entry} aria-label="Profile entry">
+        <header className={styles.entryHeader}>
+          <h1 className={styles.word}>
             {entry.term}
-            <span className="pronunciation">{entry.pronunciation}</span>
+            <span className={styles.pronunciation}>{entry.pronunciation}</span>
           </h1>
-          <p className="aliases">
+          <p className={styles.aliases}>
             {aliasTraditional} / {aliasSimplified} / {aliasHiragana} /{" "}
             {aliasKatakana}
           </p>
         </header>
 
-        <div className="sense-line">
-          <em className="part">{entry.partOfSpeech}</em>
-          <ul className="definition-list">
+        <div className={styles.senseLine}>
+          <em className={styles.part}>{entry.partOfSpeech}</em>
+          <ul className={styles.definitionList}>
             {entry.definitionItems.map((item) => (
-              <li className="definition-item" key={item}>
+              <li className={styles.definitionItem} key={item}>
                 {item}
               </li>
             ))}
           </ul>
         </div>
 
-        <nav className="link-stack" aria-label="External links">
+        <nav className={styles.linkStack} aria-label="External links">
           {links.map((link) => {
             const isExternal = link.href.startsWith("http");
             return (
               <a
-                className={`link-btn link-btn--${link.theme}`}
+                className={`${styles.linkBtn} ${linkThemeClassMap[link.theme]}`}
                 href={link.href}
                 key={link.title}
                 rel={isExternal ? "noreferrer" : undefined}
                 target={isExternal ? "_blank" : undefined}
               >
-                <span className="link-left">
-                  <span aria-hidden="true" className="link-avatar">
+                <span className={styles.linkLeft}>
+                  <span aria-hidden="true" className={styles.linkAvatar}>
                     <Image
                       alt=""
-                      className="link-avatar-img"
+                      className={styles.linkAvatarImg}
                       height={40}
                       src={link.avatar}
                       width={40}
                     />
                   </span>
-                  <span className="link-main">
-                    <span className="link-title">{link.title}</span>
-                    <span className="link-subtitle">{link.subtitle}</span>
+                  <span className={styles.linkMain}>
+                    <span className={styles.linkTitle}>{link.title}</span>
+                    <span className={styles.linkSubtitle}>{link.subtitle}</span>
                   </span>
                 </span>
-                <span aria-hidden="true" className="link-arrow">
+                <span aria-hidden="true" className={styles.linkArrow}>
                   -&gt;
                 </span>
               </a>
