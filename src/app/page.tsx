@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 import styles from "./page.module.css";
 
 const aliasTraditional = "\u8056\u5149";
@@ -47,7 +48,7 @@ const links: LinkItem[] = [
   {
     title: "Rhythm",
     subtitle: "Annotating Pingshui Rhyme",
-    href: "/rhythm",
+    href: "/rhythm/",
     avatar: "/avatars/rhythm.svg",
     theme: "rhythm",
   },
@@ -112,14 +113,8 @@ export default function Home() {
         <nav className={styles.linkStack} aria-label="External links">
           {links.map((link) => {
             const isExternal = link.href.startsWith("http");
-            return (
-              <a
-                className={`${styles.linkBtn} ${linkThemeClassMap[link.theme]}`}
-                href={link.href}
-                key={link.title}
-                rel={isExternal ? "noreferrer" : undefined}
-                target={isExternal ? "_blank" : undefined}
-              >
+            const content = (
+              <>
                 <span className={styles.linkLeft}>
                   <span aria-hidden="true" className={styles.linkAvatar}>
                     <Image
@@ -138,7 +133,31 @@ export default function Home() {
                 <span aria-hidden="true" className={styles.linkArrow}>
                   -&gt;
                 </span>
-              </a>
+              </>
+            );
+
+            if (isExternal) {
+              return (
+                <a
+                  className={`${styles.linkBtn} ${linkThemeClassMap[link.theme]}`}
+                  href={link.href}
+                  key={link.title}
+                  rel="noreferrer"
+                  target="_blank"
+                >
+                  {content}
+                </a>
+              );
+            }
+
+            return (
+              <Link
+                className={`${styles.linkBtn} ${linkThemeClassMap[link.theme]}`}
+                href={link.href}
+                key={link.title}
+              >
+                {content}
+              </Link>
             );
           })}
         </nav>

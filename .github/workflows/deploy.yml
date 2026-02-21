@@ -34,6 +34,13 @@ jobs:
       - name: Build static site
         run: npm run build
 
+      - name: Add .nojekyll
+        run: touch out/.nojekyll
+
+      - name: Copy CNAME
+        if: hashFiles('CNAME') != ''
+        run: cp CNAME out/CNAME
+
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
