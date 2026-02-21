@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import { useEffect, useMemo, useRef, useState } from "react";
 import { rhythmConfigs, type YunDict } from "./rhythms";
@@ -315,6 +315,12 @@ export default function RhythmPage() {
     void copyText(group);
   };
 
+  const clearInputText = () => {
+    setInputText("");
+    setActiveRowKey(null);
+    inputRef.current?.focus();
+  };
+
   const activateAndJumpToRow = (rowId: string, rowKey: string) => {
     setActiveRowKey(rowKey);
     jumpToRow(rowId);
@@ -324,7 +330,7 @@ export default function RhythmPage() {
     <main className={styles.dictPage}>
       <section className={styles.dictCard}>
         <header className={styles.dictHeader}>
-          <h1 className={styles.dictTitle}>平水韵标注器</h1>
+          <h1 className={styles.dictTitle}>音韵标注器</h1>
         </header>
 
         <div className={styles.dictControls}>
@@ -348,9 +354,18 @@ export default function RhythmPage() {
 
         <div className={styles.dictWorkspace}>
           <div className={styles.dictPane}>
-            <label className={styles.dictLabel} htmlFor="dict-input">
-              输入文本
-            </label>
+            <div className={styles.dictInputHeader}>
+              <label className={styles.dictLabel} htmlFor="dict-input">
+                输入文本
+              </label>
+              <button
+                className={styles.dictClearBtn}
+                onClick={clearInputText}
+                type="button"
+              >
+                清空
+              </button>
+            </div>
             <textarea
               className={styles.dictInput}
               id="dict-input"
@@ -391,7 +406,7 @@ export default function RhythmPage() {
           命中{" "}{matchedCount} 字， {expandedGroupCount} 条韵部,点击韵部复制到剪贴板。
         </div>
 
-        <div aria-label="平水韵标注结果" className={styles.dictTableWrap}>
+        <div aria-label="音韵标注结果" className={styles.dictTableWrap}>
           {renderRows.length === 0 ? (
             <p className={styles.dictEmpty}>未命中任何韵部。</p>
           ) : (
@@ -462,3 +477,4 @@ export default function RhythmPage() {
     </main>
   );
 }
+

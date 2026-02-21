@@ -78,6 +78,40 @@
   min-width: 0;
 }
 
+.dictInputHeader {
+  align-items: center;
+  display: flex;
+  gap: 8px;
+  justify-content: space-between;
+}
+
+.dictClearBtn {
+  appearance: none;
+  background: color-mix(in srgb, var(--bg) 86%, #ffffff 14%);
+  border: 1px solid color-mix(in srgb, var(--ink-soft) 38%, transparent);
+  border-radius: 8px;
+  color: var(--ink-soft);
+  cursor: pointer;
+  font-size: 0.84rem;
+  line-height: 1;
+  padding: 0.44rem 0.62rem;
+  transition:
+    background-color 120ms ease,
+    border-color 120ms ease,
+    color 120ms ease;
+}
+
+.dictClearBtn:hover {
+  background: color-mix(in srgb, var(--accent) 12%, #ffffff 88%);
+  border-color: color-mix(in srgb, var(--accent) 48%, transparent);
+  color: var(--ink);
+}
+
+.dictClearBtn:focus-visible {
+  outline: 2px solid color-mix(in srgb, var(--accent) 62%, transparent);
+  outline-offset: 2px;
+}
+
 .dictMeta {
   color: var(--ink-soft);
   font-size: 0.9rem;

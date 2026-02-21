@@ -2,7 +2,10 @@ import type { Metadata } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "bqsgwys | Homepage",
+  title: {
+    default: "KIYOTERU",
+    template: "KIYOTERU | %s",
+  },
   description: "Personal frontend homepage deployed by GitHub Pages.",
 };
 

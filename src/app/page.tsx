@@ -47,7 +47,7 @@ const links: LinkItem[] = [
   },
   {
     title: "Rhythm",
-    subtitle: "Annotating Pingshui Rhyme",
+    subtitle: "Annotating Chinese Rhyme",
     href: "/rhythm/",
     avatar: "/avatars/rhythm.svg",
     theme: "rhythm",

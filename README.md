@@ -1,47 +1,12 @@
-﻿# bqsgwys.github.io
+﻿# KIYOTERU
 
-Next.js frontend homepage with automatic CI/CD deployment to GitHub Pages.
+![Deploy Next.js to GitHub Pages](https://github.com/bqsgwys/bqsgwys.github.io/actions/workflows/deploy.yml/badge.svg)
 
-## Local Development
+This repository deploys to GitHub Pages via GitHub Actions.
 
-```bash
-npm run dev
-```
+## Workflow
 
-Open `http://localhost:3000`.
+- File: `.github/workflows/deploy.yml`
+- Trigger: push to `main` or manual dispatch
+- Steps: install dependencies, build static site, upload artifact, deploy to Pages
 
-## Build Static Files
-
-```bash
-npm run build
-```
-
-The static export output is generated in `out/`.
-
-## GitHub Pages CI/CD
-
-Workflow file: `.github/workflows/deploy.yml`
-
-Trigger:
-- Push to `main`
-- Manual run from Actions page
-
-Pipeline:
-1. `npm ci`
-2. `npm run build` (Next.js static export)
-3. Upload `out/`
-4. Deploy to GitHub Pages
-
-## Repository Settings Required
-
-In GitHub repository:
-1. Open `Settings` -> `Pages`
-2. Under `Build and deployment`, set `Source` to `GitHub Actions`
-
-## Notes
-
-- `next.config.ts` is already configured for:
-  - `output: "export"`
-  - `images.unoptimized: true`
-  - auto `basePath/assetPrefix` for project repo deployment
-- For `username.github.io` repositories, root path is used automatically.
