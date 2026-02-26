@@ -2,14 +2,14 @@ import oriYunDict from "./oriYunDict.json";
 
 export type YunDict = Record<string, string>;
 
-export type RhythmConfig = {
+export type rhymeConfig = {
   id: string;
   label: string;
   description: string;
   dict: YunDict;
 };
 
-export const rhythmConfigs: RhythmConfig[] = [
+export const rhymeConfigs: rhymeConfig[] = [
   {
     id: "pingshui-yun",
     label: "平水韵",

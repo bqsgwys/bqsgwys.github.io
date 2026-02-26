@@ -1,7 +1,7 @@
 ﻿"use client";
 
 import { useEffect, useMemo, useRef, useState } from "react";
-import { rhythmConfigs, type YunDict } from "./rhythms";
+import { rhymeConfigs, type YunDict } from "./rhyme";
 import styles from "./page.module.css";
 
 type CharIndex = Map<string, string[]>;
@@ -118,7 +118,7 @@ async function copyText(text: string): Promise<void> {
 const TABLE_TONES: ToneColumn[] = ["平", "上", "去", "入"];
 
 const indexByDictId: Record<string, CharIndex> = Object.fromEntries(
-  rhythmConfigs.map((config) => [config.id, buildCharIndex(config.dict)]),
+  rhymeConfigs.map((config) => [config.id, buildCharIndex(config.dict)]),
 ) as Record<string, CharIndex>;
 
 const defaultInput = "春眠不觉晓，处处闻啼鸟。\n夜来风雨声，花落知多少。";
@@ -131,8 +131,8 @@ const toneClassMap: Record<ToneKind, string> = {
   unknown: styles.dictToneGroupUnknown,
 };
 
-export default function RhythmPage() {
-  const [dictId, setDictId] = useState(rhythmConfigs[0]?.id ?? "");
+export default function RhymePage() {
+  const [dictId, setDictId] = useState(rhymeConfigs[0]?.id ?? "");
   const [inputText, setInputText] = useState(defaultInput);
   const [activeRowKey, setActiveRowKey] = useState<string | null>(null);
   const [navHeight, setNavHeight] = useState<number | null>(null);
@@ -141,7 +141,7 @@ export default function RhythmPage() {
   const navRef = useRef<HTMLDivElement | null>(null);
 
   const currentDict = useMemo(
-    () => rhythmConfigs.find((config) => config.id === dictId) ?? rhythmConfigs[0],
+    () => rhymeConfigs.find((config) => config.id === dictId) ?? rhymeConfigs[0],
     [dictId],
   );
 
@@ -343,7 +343,7 @@ export default function RhythmPage() {
             onChange={(event) => setDictId(event.target.value)}
             value={currentDict?.id ?? ""}
           >
-            {rhythmConfigs.map((config) => (
+            {rhymeConfigs.map((config) => (
               <option key={config.id} value={config.id}>
                 {config.label}
               </option>
@@ -477,4 +477,3 @@ export default function RhythmPage() {
     </main>
   );
 }
-

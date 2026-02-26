@@ -23,7 +23,7 @@ const entry = {
 type LinkTheme =
   | "blog"
   | "radio"
-  | "rhythm"
+  | "rhyme"
   | "bilibili"
   | "github"
   | "thujsd";
@@ -46,11 +46,11 @@ const links: LinkItem[] = [
     theme: "radio",
   },
   {
-    title: "Rhythm",
+    title: "rhyme",
     subtitle: "Annotating Chinese Rhyme",
-    href: "/rhythm/",
-    avatar: "/avatars/rhythm.svg",
-    theme: "rhythm",
+    href: "/rhyme/",
+    avatar: "/avatars/rhyme.svg",
+    theme: "rhyme",
   },
   {
     title: "Bilibili",
@@ -78,7 +78,7 @@ const links: LinkItem[] = [
 const linkThemeClassMap: Record<LinkTheme, string> = {
   blog: styles.linkBtnBlog,
   radio: styles.linkBtnRadio,
-  rhythm: styles.linkBtnRhythm,
+  rhyme: styles.linkBtnrhyme,
   bilibili: styles.linkBtnBilibili,
   github: styles.linkBtnGithub,
   thujsd: styles.linkBtnThujsd,
