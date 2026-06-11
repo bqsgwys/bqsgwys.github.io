@@ -232,6 +232,12 @@
   --link-shadow-hard: rgba(109, 64, 8, 0.42);
 }
 
+.linkBtnMatrix {
+  --link-accent: #c9f53b;
+  --link-fill: #758f16;
+  --link-shadow-hard: rgba(49, 64, 4, 0.44);
+}
+
 .linkBtnBilibili {
   --link-accent: #ff5f99;
   --link-fill: #ff5f99;

@@ -24,6 +24,7 @@ type LinkTheme =
   | "blog"
   | "radio"
   | "rhyme"
+  | "matrix"
   | "bilibili"
   | "github"
   | "thujsd";
@@ -53,6 +54,13 @@ const links: LinkItem[] = [
     theme: "rhyme",
   },
   {
+    title: "Dot Matrix",
+    subtitle: "BDF display composer",
+    href: "/matrix/",
+    avatar: "/avatars/matrix.svg",
+    theme: "matrix",
+  },
+  {
     title: "Bilibili",
     subtitle: `@${aliasTraditional}Kiyoteru`,
     href: "https://space.bilibili.com/13131167",
@@ -79,6 +87,7 @@ const linkThemeClassMap: Record<LinkTheme, string> = {
   blog: styles.linkBtnBlog,
   radio: styles.linkBtnRadio,
   rhyme: styles.linkBtnrhyme,
+  matrix: styles.linkBtnMatrix,
   bilibili: styles.linkBtnBilibili,
   github: styles.linkBtnGithub,
   thujsd: styles.linkBtnThujsd,

@@ -3,12 +3,16 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
+    "generate:fonts": "node scripts/generate-merged-fonts.mjs",
+    "predev": "npm run generate:fonts",
     "dev": "next dev",
+    "prebuild": "npm run generate:fonts",
     "build": "next build",
     "start": "next start",
     "lint": "eslint"
   },
   "dependencies": {
+    "lucide-react": "^0.468.0",
     "next": "16.1.6",
     "react": "19.2.3",
     "react-dom": "19.2.3"
